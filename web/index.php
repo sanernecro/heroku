@@ -1,3 +1,4 @@
 <?php
-echo rand(11111,9999999);
+$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+echo $hostname;
 ?>
