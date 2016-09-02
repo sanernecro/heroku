@@ -13,8 +13,8 @@ function generate_name($length){
     }
     return $rname;
 }
-require_once('includes/Mobile_Detect.php');
-require_once('includes/Browser.php');
+require_once('Mobile_Detect.php');
+require_once('Browser.php');
 $detect = new Mobile_Detect;
 $browser = new Browser();
 $ads = "http://goo.gl/c1u740";
