@@ -39,15 +39,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 $hostname = gethostbyaddr($ip);
 $host_verify = true;
 $blacklist = array(
-  "66.220.145",
   "google",
-  "facebook",
-  "amazonaws.com",
-  "linode.com",
-  "177.54.146",
-  "191.96.4",
-  "181.41.201",
-  "turkrdns.com"
+  "facebook"
 );
 foreach ($blacklist as $black) {
   if(strpos($hostname, $black) !== false){
