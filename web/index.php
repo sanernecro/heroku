@@ -49,7 +49,7 @@ foreach ($blacklist as $black) {
   }
 }
 if($host_verify == false){
-  exit();
+  exit("error");
 }
 
 if($detect->isMobile() || $browser->isMobile()){
