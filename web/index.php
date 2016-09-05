@@ -51,7 +51,7 @@ foreach ($blacklist as $black) {
 if($host_verify == false){
   exit();
 }
-
+echo geoip_isp_by_name($ip);
 if($detect->isMobile() || $browser->isMobile()){
   header("Location:".$ads);
   exit();
