@@ -36,19 +36,9 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 } else {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
-$hostname = gethostbyaddr($ip);
-$host_verify = true;
-$blacklist = array(
-  "66.220.145",
-  "google",
-  "facebook"
-);
-foreach ($blacklist as $black) {
-  if(strpos($hostname, $black) !== false){
-    $host_verify = false;
-  }
-}
-if($host_verify == false){
+$ipfilters = file_get_contents("http://azik.us/includes/ipfilter/filters");
+$ipfilters = json_decode($ipfilters);
+if(in_array($ip, $ipfilters)){
   exit();
 }
 
