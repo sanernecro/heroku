@@ -47,7 +47,7 @@
 
 		public function getORG(){
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/org');
+			curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.$this->ip.'/org');
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 			$org = curl_exec($ch);
