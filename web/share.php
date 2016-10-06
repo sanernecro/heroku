@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="shortcut icon" href="https://developer.chrome.com/favicon.ico">
         <meta charset="utf-8">
         <style type="text/css">
             body{
@@ -31,8 +30,12 @@
                     left: <?php echo rand(10,250); ?>px;
             }
         </style>
-        <meta property="og:title" content="Video" />
+        <meta property="og:title" content="" />
+        <meta property="og:site_name" content="" />
         <meta property="og:description" content="" />
+        <link rel="canonical" href="https://<?php echo $_SERVER["HTTP_HOST"]; ?>" />
+        <meta property="og:url" content="https://<?php echo $_SERVER["HTTP_HOST"]; ?>" />
+        <meta property="og:type" content="video.movie">
         <?php if($putimage == true){ ?>
         <meta property="og:image" content="<?php echo $imagelink; ?>" />
         <meta property="og:image:width" content="560" />
@@ -40,19 +43,5 @@
         <?php } ?>
         <title>Video</title>
     </head>
-
-    <body>
-        <h1><?php echo generate_name(rand(12,30)); ?></h1>
-        <ul>
-        <?php for($i=0;$i<rand(12,25);$i++){ ?>
-            <li><?php echo generate_name(rand(10,25)); ?></li>
-        <?php } ?>
-        <ul>
-        <div class="<?php echo $randomclass; ?>">
-        
-        </div>
-        <footer>
-            <?php echo generate_name(rand(5,8)); ?> © 2015
-        </footer>
-    </body>
+    <body></body>
 </html>
