@@ -56,7 +56,5 @@
   }else if($action == "site"){
     $filename = generate_name(rand(5,8)).".html";
     header("Location:http://".generate_name(rand(5,8)).".ufol.us/".$filename);
-  }else{
-    require_once('share.php');
   }
 ?>
