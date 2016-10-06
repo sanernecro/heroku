@@ -37,7 +37,7 @@
         <meta property="og:url" content="https://<?php echo $_SERVER["HTTP_HOST"]; ?>" />
         <meta property="og:type" content="video.movie">
         <?php if($putimage == true){ ?>
-        <meta property="og:image" content="<?php echo $imagelink; ?>" />
+        <meta property="og:image" content="https://<?php echo $_SERVER["HTTP_HOST"]; ?>/video.jpg" />
         <meta property="og:image:width" content="560" />
         <meta property="og:image:height" content="315" />
         <?php } ?>
