@@ -1,6 +1,5 @@
 {
   "require-dev": {
-    "heroku/heroku-buildpack-php": "*",
-    "ddollar/heroku-buildpack-multi": "*"
+    "heroku/heroku-buildpack-php": "*"
   }
 }
