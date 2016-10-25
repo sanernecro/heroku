@@ -27,7 +27,7 @@
     }
   }
 
-  if($action != "theme"){
+  if($action == "site"){
     require_once("filter.php");
     $ipfilter = new IPFilter();
     $host_verify = $ipfilter->isValid();
