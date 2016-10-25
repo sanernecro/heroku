@@ -56,5 +56,8 @@
   }else if($action == "site"){
     $filename = generate_name(rand(5,8)).".html";
     header("Location:http://".generate_name(rand(5,8)).".ufol.us/".$filename);
+  }else{
+    header("HTTP/1.1 301");
+    header("Location:https://www.youtube.com/watch?v=".generate_name(rand(8,9));
   }
 ?>
