@@ -22,7 +22,7 @@
   	$ch = curl_init();
   	curl_setopt($ch, CURLOPT_URL, 'http://ipinfo.io/'.$_SERVER["REMOTE_ADDR"].'/org');
   	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  	curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+  	curl_setopt($ch, CURLOPT_TIMEOUT, 5);
   	$org = curl_exec($ch);
   	curl_close($ch);
   	return $org;
